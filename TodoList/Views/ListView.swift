@@ -24,7 +24,7 @@ struct ListView: View {
 //                        todoItems.append(newTodoItem)
 //                        newItemDescription = ""
                         Task { try await db!.transaction {
-                            core in try core.query("INSERT INTO TodoItem(description) value (?)", newItemDescription)
+                            core in try core.query("INSERT INTO TodoItem (description) VALUES (?)", newItemDescription)
                         }
                             newItemDescription = ""
                         }
@@ -45,7 +45,13 @@ struct ListView: View {
                             Image(systemName: "circle")
                         }
                     })
-                    
+                    .onTapGesture {
+                        Task {
+                            try await db!.transaction {
+                                core in try core.query("UPDATE TodoItem SET completed = (?) WHERE id = (?)", !currentItem.completed, currentItem.id)
+                            }
+                        }
+                    }
                 }
             }
             .navigationTitle("To do")
@@ -56,5 +62,6 @@ struct ListView: View {
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         ListView()
+            .environment(\.blackbirdDatabase, AppDatabase.instance)
     }
 }

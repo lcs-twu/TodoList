@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		819C2C3029DDD23C002B035C /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 819C2C2F29DDD23C002B035C /* db.sqlite */; };
 		CAC2A6E729DC596B0060E02D /* TodoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2A6E629DC596B0060E02D /* TodoListApp.swift */; };
 		CAC2A6EB29DC596E0060E02D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAC2A6EA29DC596E0060E02D /* Assets.xcassets */; };
 		CAC2A6EE29DC596E0060E02D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAC2A6ED29DC596E0060E02D /* Preview Assets.xcassets */; };
@@ -14,18 +15,17 @@
 		CAC2A6F929DC5AA70060E02D /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2A6F829DC5AA70060E02D /* TodoItem.swift */; };
 		CAC2A6FE29DC5E8F0060E02D /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = CAC2A6FD29DC5E8F0060E02D /* Blackbird */; };
 		CAC2A70129DC5EE50060E02D /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2A70029DC5EE50060E02D /* AppDatabase.swift */; };
-		CAC2A70529DDB2C20060E02D /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CAC2A70429DDB2C20060E02D /* db.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CAC2A6E329DC596B0060E02D /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		819C2C2F29DDD23C002B035C /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = SOURCE_ROOT; };
+		CAC2A6E329DC596B0060E02D /* MoodMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC2A6E629DC596B0060E02D /* TodoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListApp.swift; sourceTree = "<group>"; };
 		CAC2A6EA29DC596E0060E02D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAC2A6ED29DC596E0060E02D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CAC2A6F529DC599A0060E02D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		CAC2A6F829DC5AA70060E02D /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		CAC2A70029DC5EE50060E02D /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
-		CAC2A70429DDB2C20060E02D /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = db.sqlite; path = ../../../db.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 		CAC2A6E429DC596B0060E02D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CAC2A6E329DC596B0060E02D /* TodoList.app */,
+				CAC2A6E329DC596B0060E02D /* MoodMapper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,8 +88,8 @@
 		CAC2A6F729DC5A580060E02D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CAC2A70429DDB2C20060E02D /* db.sqlite */,
 				CAC2A6F829DC5AA70060E02D /* TodoItem.swift */,
+				819C2C2F29DDD23C002B035C /* db.sqlite */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,9 +105,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CAC2A6E229DC596B0060E02D /* TodoList */ = {
+		CAC2A6E229DC596B0060E02D /* MoodMapper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CAC2A6F129DC596E0060E02D /* Build configuration list for PBXNativeTarget "TodoList" */;
+			buildConfigurationList = CAC2A6F129DC596E0060E02D /* Build configuration list for PBXNativeTarget "MoodMapper" */;
 			buildPhases = (
 				CAC2A6DF29DC596B0060E02D /* Sources */,
 				CAC2A6E029DC596B0060E02D /* Frameworks */,
@@ -117,12 +117,12 @@
 			);
 			dependencies = (
 			);
-			name = TodoList;
+			name = MoodMapper;
 			packageProductDependencies = (
 				CAC2A6FD29DC5E8F0060E02D /* Blackbird */,
 			);
 			productName = TodoList;
-			productReference = CAC2A6E329DC596B0060E02D /* TodoList.app */;
+			productReference = CAC2A6E329DC596B0060E02D /* MoodMapper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -140,7 +140,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CAC2A6DE29DC596B0060E02D /* Build configuration list for PBXProject "TodoList" */;
+			buildConfigurationList = CAC2A6DE29DC596B0060E02D /* Build configuration list for PBXProject "MoodMapper" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -156,7 +156,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CAC2A6E229DC596B0060E02D /* TodoList */,
+				CAC2A6E229DC596B0060E02D /* MoodMapper */,
 			);
 		};
 /* End PBXProject section */
@@ -167,7 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAC2A6EE29DC596E0060E02D /* Preview Assets.xcassets in Resources */,
-				CAC2A70529DDB2C20060E02D /* db.sqlite in Resources */,
+				819C2C3029DDD23C002B035C /* db.sqlite in Resources */,
 				CAC2A6EB29DC596E0060E02D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,7 +364,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CAC2A6DE29DC596B0060E02D /* Build configuration list for PBXProject "TodoList" */ = {
+		CAC2A6DE29DC596B0060E02D /* Build configuration list for PBXProject "MoodMapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CAC2A6EF29DC596E0060E02D /* Debug */,
@@ -373,7 +373,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CAC2A6F129DC596E0060E02D /* Build configuration list for PBXNativeTarget "TodoList" */ = {
+		CAC2A6F129DC596E0060E02D /* Build configuration list for PBXNativeTarget "MoodMapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CAC2A6F229DC596E0060E02D /* Debug */,

@@ -36,6 +36,7 @@ struct ListView: View {
                 .padding(20)
                 
                 List{
+                    
                     ForEach(todoItems.results) { currentItem in
                         Label(title: {
                             Text(currentItem.description)
@@ -54,9 +55,30 @@ struct ListView: View {
                             }
                         }
                     }
+                    
+                    .onDelete(perform: removeRows)
+                    
                 }
             }
             .navigationTitle("To do")
+        }
+    }
+    
+    func removeRows(at offsets: IndexSet){
+        Task{
+            
+            try await db!.transaction{ core in
+                var idList = ""
+                for offset in offsets{
+                    idList += "\(todoItems.results[offset].id),"
+                }
+                print(idList)
+                idList.removeLast()
+                print(idList)
+                
+                try core.query("DELETE FROM TodoItem WHERE id IN (?)",idList)
+            }
+        
         }
     }
 }

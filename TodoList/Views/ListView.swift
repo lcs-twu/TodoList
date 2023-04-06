@@ -18,11 +18,11 @@ struct ListView: View {
                 HStack {
                     TextField("Enter a to-do item", text: $newItemDescription)
                     Button(action: {
-//                        let lastId = todoItems.last!.id
-//                        let newId = lastId + 1
-//                        let newTodoItem = TodoItem(id: newId, description: newItemDescription, completed: false)
-//                        todoItems.append(newTodoItem)
-//                        newItemDescription = ""
+                        //                        let lastId = todoItems.last!.id
+                        //                        let newId = lastId + 1
+                        //                        let newTodoItem = TodoItem(id: newId, description: newItemDescription, completed: false)
+                        //                        todoItems.append(newTodoItem)
+                        //                        newItemDescription = ""
                         Task { try await db!.transaction {
                             core in try core.query("INSERT INTO TodoItem (description) VALUES (?)", newItemDescription)
                         }
@@ -35,20 +35,22 @@ struct ListView: View {
                 }
                 .padding(20)
                 
-                List(todoItems.results) { currentItem in
-                    Label(title: {
-                        Text(currentItem.description)
-                    }, icon: {
-                        if currentItem.completed == true {
-                            Image(systemName: "checkmark.circle")
-                        } else {
-                            Image(systemName: "circle")
-                        }
-                    })
-                    .onTapGesture {
-                        Task {
-                            try await db!.transaction {
-                                core in try core.query("UPDATE TodoItem SET completed = (?) WHERE id = (?)", !currentItem.completed, currentItem.id)
+                List{
+                    ForEach(todoItems.results) { currentItem in
+                        Label(title: {
+                            Text(currentItem.description)
+                        }, icon: {
+                            if currentItem.completed == true {
+                                Image(systemName: "checkmark.circle")
+                            } else {
+                                Image(systemName: "circle")
+                            }
+                        })
+                        .onTapGesture {
+                            Task {
+                                try await db!.transaction {
+                                    core in try core.query("UPDATE TodoItem SET completed = (?) WHERE id = (?)", !currentItem.completed, currentItem.id)
+                                }
                             }
                         }
                     }

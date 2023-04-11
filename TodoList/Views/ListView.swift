@@ -16,6 +16,10 @@ struct ListView: View {
     var body: some View {
         NavigationView{
             VStack {
+                
+                ListItemsView(filteredOn: searchText)
+                .searchable(text: $searchText)
+                
                 HStack {
                     TextField("Enter a to-do item", text: $newItemDescription)
                     Button(action: {
@@ -35,9 +39,6 @@ struct ListView: View {
                     })
                 }
                 .padding(20)
-                
-                
-                .searchable(text: $searchText)
             }
             .navigationTitle("To do")
         }

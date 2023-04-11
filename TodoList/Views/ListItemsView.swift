@@ -10,7 +10,7 @@ import SwiftUI
 struct ListItemsView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     
-    @BlackbirdLiveModels({ db in try await TodoItem.read(from: db, sqlWhere: "description LIKE ?", "%\(searchText)%")}) var todoItems
+    @BlackbirdLiveModels var todoItems: Blackbird.LiveResults<TodoItem>
     
     var body: some View {
         List{
@@ -38,6 +38,14 @@ struct ListItemsView: View {
             
         }
     }
+    
+    init(filteredOn searchText: String){
+        _todoItems = BlackbirdLiveModels({
+            db in
+            try await TodoItem.read(from: db, sqlWhere: "description LIKE ?", "%\(searchText)%")
+        })
+    }
+    
     func removeRows(at offsets: IndexSet){
         Task{
             
@@ -59,6 +67,7 @@ struct ListItemsView: View {
 
 struct ListItemsView_Previews: PreviewProvider {
     static var previews: some View {
-        ListItemsView()
+        ListItemsView(filteredOn: "")
+            .environment(\.blackbirdDatabase, AppDatabase.instance)
     }
 }

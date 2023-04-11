@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ListView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
-    @BlackbirdLiveModels({ db in try await TodoItem.read(from: db)}) var todoItems
+    @BlackbirdLiveModels({ db in try await TodoItem.read(from: db, sqlWhere: "description LIKE ?", "%\(searchText)%")}) var todoItems
     @State var newItemDescription: String = ""
     
+    @State var searchText = ""
     var body: some View {
         NavigationView{
             VStack {
@@ -59,6 +60,7 @@ struct ListView: View {
                     .onDelete(perform: removeRows)
                     
                 }
+                .searchable(text: $searchText)
             }
             .navigationTitle("To do")
         }

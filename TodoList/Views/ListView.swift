@@ -43,8 +43,6 @@ struct ListView: View {
             .navigationTitle("To do")
         }
     }
-    
-    
 }
 
 struct ListView_Previews: PreviewProvider {
